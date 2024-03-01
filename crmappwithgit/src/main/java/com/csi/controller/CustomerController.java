@@ -71,6 +71,13 @@ public class CustomerController {
         return new ResponseEntity<>(customerServiceImpl.update(customer1), HttpStatus.CREATED);
     }
 
+    @GetMapping("/welcome")
+    public ResponseEntity<String> say() {
+
+        return ResponseEntity.ok("Welocome to GitHub");
+
+    }
+
     @DeleteMapping("/deleteById/{custId}")
     public ResponseEntity<String> deleteById(@PathVariable int custId) {
         customerServiceImpl.deleteById(custId);
