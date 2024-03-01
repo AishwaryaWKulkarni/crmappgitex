@@ -78,6 +78,11 @@ public class CustomerController {
 
     }
 
+    @GetMapping("/services")
+    public ResponseEntity<String> hello(){
+        return ResponseEntity.ok("Software Development Services");
+    }
+
     @DeleteMapping("/deleteById/{custId}")
     public ResponseEntity<String> deleteById(@PathVariable int custId) {
         customerServiceImpl.deleteById(custId);
