@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,6 +78,12 @@ public class CustomerController {
         return ResponseEntity.ok("Welocome to GitHub");
 
     }
+
+    @GetMapping("/sortbyid")
+    public ResponseEntity<List<Customer>> sortById() {
+        return ResponseEntity.ok(customerServiceImpl.findAll().stream().sorted(Comparator.comparingInt(Customer::getCustId)).toList());
+    }
+
 
     @DeleteMapping("/deleteById/{custId}")
     public ResponseEntity<String> deleteById(@PathVariable int custId) {
