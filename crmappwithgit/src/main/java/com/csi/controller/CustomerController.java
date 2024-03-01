@@ -79,17 +79,17 @@ public class CustomerController {
 
     }
 
-    @GetMapping("/sortbyid")
-    public ResponseEntity<List<Customer>> sortById() {
-        return ResponseEntity.ok(customerServiceImpl.findAll().stream().sorted(Comparator.comparingInt(Customer::getCustId)).toList());
-    }
-
-
     @DeleteMapping("/deleteById/{custId}")
     public ResponseEntity<String> deleteById(@PathVariable int custId) {
         customerServiceImpl.deleteById(custId);
         return ResponseEntity.ok("Data Deleted SuccessFully");
     }
 
+    @GetMapping("/sortbyname")
+
+    public ResponseEntity<List<Customer>> sortByName() {
+
+        return ResponseEntity.ok(customerServiceImpl.findAll().stream().sorted(Comparator.comparing(Customer::getCustName)).toList());
+    }
 
 }
