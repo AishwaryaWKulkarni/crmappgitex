@@ -79,6 +79,8 @@ public class CustomerController {
 
     }
 
+
+    //by gunjali
     @GetMapping("/sortbyid")
     public ResponseEntity<List<Customer>> sortById() {
         return ResponseEntity.ok(customerServiceImpl.findAll().stream().sorted(Comparator.comparingInt(Customer::getCustId)).toList());
